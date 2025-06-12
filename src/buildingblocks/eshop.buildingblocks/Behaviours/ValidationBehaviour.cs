@@ -1,7 +1,6 @@
 ﻿using eshop.buildingblocks.CQRS;
 using FluentValidation;
-using MediatR;
-using System.Windows.Input;
+using MediatR; 
 
 namespace eshop.buildingblocks.Behaviours;
 

@@ -1,8 +1,10 @@
-﻿namespace eshop.catalog.api.Exceptions
+﻿using eshop.buildingblocks.Exceptions;
+
+namespace eshop.catalog.api.Exceptions
 {
-    public class ProductNotFoundException:Exception
+    public class ProductNotFoundException:NotFoundException
     {
-        public ProductNotFoundException():base(" Product Is Not Found.!")
+        public ProductNotFoundException(Guid id ):base("Product" , id)
         {
                 
         }

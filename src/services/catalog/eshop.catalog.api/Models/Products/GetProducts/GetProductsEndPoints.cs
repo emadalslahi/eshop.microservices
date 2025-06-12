@@ -1,19 +1,17 @@
-﻿using eshop.catalog.api.Models;
+﻿namespace eshop.catalog.api.Products.GetProducts;
 
-namespace eshop.catalog.api.Products.GetProducts;
-
-
-public record class GetProductsResponse(IEnumerable<Product> Products);
-
+public record GetProductsRequest(int? PageNumber=1, int? PageSize= Cnstnts.FetchPageSize);
+public record  GetProductsResponse(IEnumerable<Product> Products, int? PageNumber = 1, int? PageSize = Cnstnts.FetchPageSize);
 public class GetProductsEndPoints() : ICarterModule
 {
-    public void AddRoutes(IEndpointRouteBuilder app)
+    public void AddRoutes(IEndpointRouteBuilder app )
     {
-        try {
-        app.MapGet("/products",
-            async (ISender sender) =>
+      
+        app.MapGet(Router. ProductRootPath ,
+            async ([AsParameters] GetProductsRequest request,  ISender sender) =>
             {
-                var result = await sender.Send(new GetProductsQuery());
+                var query = request.Adapt<GetProductsQuery>();
+                var result = await sender.Send(query);
                 var response = result.Adapt<GetProductsResponse>();
                 return Results.Ok(response);
             })
@@ -22,9 +20,5 @@ public class GetProductsEndPoints() : ICarterModule
             .WithDescription("This endpoint retrieves all products from the catalog.")
             .Produces<GetProductsResponse>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest);
-        }
-        catch (Exception ex) {
-         //   logger.LogError(ex, "Error occurred while adding GetProducts endpoint routes.");
-        }
     }
 }

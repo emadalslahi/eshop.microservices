@@ -17,7 +17,7 @@ internal class GetProductByCategoryHandler(IDocumentSession session , ILogger<Ge
                             .Where(p=>p.Category.Contains(qry.category)).ToListAsync(cancellationToken);
 
         if (products is null) {
-            throw new ProductNotFoundException();
+            return new GetProductByCategoryResult(new  List<Product>());
         }
 
         return new GetProductByCategoryResult(products);

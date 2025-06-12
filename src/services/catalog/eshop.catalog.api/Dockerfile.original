@@ -13,7 +13,6 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["services/catalog/eshop.catalog.api/eshop.catalog.api.csproj", "services/catalog/eshop.catalog.api/"]
-COPY ["buildingblocks/eshop.buildingblocks/eshop.buildingblocks.csproj", "buildingblocks/eshop.buildingblocks/"]
 RUN dotnet restore "./services/catalog/eshop.catalog.api/eshop.catalog.api.csproj"
 COPY . .
 WORKDIR "/src/services/catalog/eshop.catalog.api"
