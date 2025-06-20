@@ -1,8 +1,36 @@
 version: "3.8"
 
 services:
- catalogDb:
-  image: postgres
-   
+  catalogDb:
+    image: postgres
+
+  basketDb:
+    image: postgres
+
+  distributedCash:
+    image: redis
+
+    
+  eshop.catalog.api:
+    image: ${DOCKER_REGISTRY-}eshopcatalogapi
+    build:
+      context: .
+      dockerfile: services/catalog/eshop.catalog.api/Dockerfile
+
+  eshop.basket.api:
+    image: ${DOCKER_REGISTRY-}eshopbasketapi
+    build:
+      context: .
+      dockerfile: services/basket/Eshop.Basket.Api/Dockerfile
+
+  eshop.discount.grpc:
+    image: ${DOCKER_REGISTRY-}eshopdiscountgrpc
+    build:
+      context: .
+      dockerfile: services/discount/Eshop.Discount.Grpc/Dockerfile
+
 volumes:
  postgres_catalog:
+ postgres_basket:
+
+
