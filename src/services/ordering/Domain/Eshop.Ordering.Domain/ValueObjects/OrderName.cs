@@ -2,7 +2,8 @@
 
 public record OrderName
 {
-    private const int DefaultLength = 5;
+    private const int DefaultMaxLength = 255;
+    private const int DefaultMinLength = 5;
     public string Value { get; }
     private OrderName(string value) => Value = value;
 
@@ -10,7 +11,8 @@ public record OrderName
     { 
         ArgumentException.ThrowIfNullOrEmpty(value, nameof(value));
 
-        ArgumentOutOfRangeException.ThrowIfNotEqual(value.Length, DefaultLength);
+        ArgumentOutOfRangeException.ThrowIfGreaterThan(value.Length, DefaultMaxLength);
+        ArgumentOutOfRangeException.ThrowIfLessThan(value.Length, DefaultMinLength);
         return new OrderName(value);
     }
 }

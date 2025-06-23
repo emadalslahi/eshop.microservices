@@ -1,10 +1,11 @@
-﻿using Eshop.Ordering.Domain.Models;
+﻿using Eshop.Ordering.Application.Data;
+using Eshop.Ordering.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace Eshop.Ordering.Infrastructuer.Data;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : DbContext, IApplicationDbContext
 {
     // Add-Migration InitialCreate -OutputDir Data/Migrations -Project Eshop.Ordering.Infrastructuer -StartupProject Eshop.Ordering.Api
     public ApplicationDbContext(DbContextOptions options)
@@ -14,6 +15,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Product> Products => Set<Product>();
     public DbSet<Order> Orders => Set<Order>();
     public DbSet<OrderItem> Items => Set<OrderItem>();
+
     //----------------------------------------------
 
     protected override void OnModelCreating(ModelBuilder builder)

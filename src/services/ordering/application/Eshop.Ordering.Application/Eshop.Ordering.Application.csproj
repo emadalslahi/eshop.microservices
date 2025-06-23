@@ -8,6 +8,16 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\buildingblocks\eshop.buildingblocks\eshop.buildingblocks.csproj" />
+    <ProjectReference Include="..\..\Domain\Eshop.Ordering.Domain\Eshop.Ordering.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Orders\EventHandlers\" />
+    <Folder Include="Orders\Quaries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.6" />
   </ItemGroup>
 
 </Project>

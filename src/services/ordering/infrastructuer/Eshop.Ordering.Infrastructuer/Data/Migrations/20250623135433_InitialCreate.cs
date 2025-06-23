@@ -21,7 +21,8 @@ namespace Eshop.Ordering.Infrastructuer.Data.Migrations
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastUpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedCount = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -38,7 +39,8 @@ namespace Eshop.Ordering.Infrastructuer.Data.Migrations
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastUpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedCount = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -76,7 +78,8 @@ namespace Eshop.Ordering.Infrastructuer.Data.Migrations
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastUpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedCount = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -101,7 +104,8 @@ namespace Eshop.Ordering.Infrastructuer.Data.Migrations
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastUpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    LastUpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedCount = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {

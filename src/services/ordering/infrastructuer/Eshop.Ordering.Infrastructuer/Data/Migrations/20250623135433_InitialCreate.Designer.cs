@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Eshop.Ordering.Infrastructuer.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250621204031_InitialCreate")]
+    [Migration("20250623135433_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -53,6 +53,9 @@ namespace Eshop.Ordering.Infrastructuer.Data.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
+                    b.Property<int?>("UpdatedCount")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Email")
@@ -89,6 +92,9 @@ namespace Eshop.Ordering.Infrastructuer.Data.Migrations
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("UpdatedCount")
+                        .HasColumnType("int");
 
                     b.ComplexProperty<Dictionary<string, object>>("BillingAddress", "Eshop.Ordering.Domain.Models.Order.BillingAddress#Address", b1 =>
                         {
@@ -243,6 +249,9 @@ namespace Eshop.Ordering.Infrastructuer.Data.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<int?>("UpdatedCount")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("OrderId");
@@ -277,6 +286,9 @@ namespace Eshop.Ordering.Infrastructuer.Data.Migrations
                     b.Property<decimal>("Price")
                         .HasMaxLength(9999)
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("UpdatedCount")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
