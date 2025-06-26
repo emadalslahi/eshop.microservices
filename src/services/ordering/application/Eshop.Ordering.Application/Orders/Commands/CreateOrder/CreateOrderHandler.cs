@@ -1,40 +1,28 @@
-﻿using eshop.buildingblocks.CQRS;
-using Eshop.Ordering.Application.Data;
-using Eshop.Ordering.Application.Dtos;
-using Eshop.Ordering.Domain.Enums;
-using Eshop.Ordering.Domain.Models;
-using Eshop.Ordering.Domain.ValueObjects;
-using System.Reflection.Emit;
-
-namespace Eshop.Ordering.Application.Orders.Commands.CreateOrder;
+﻿namespace Eshop.Ordering.Application.Orders.Commands.CreateOrder;
 
 internal class CreateOrderCommandHandler(IApplicationDbContext dbContext) : ICommandHandler<CreateOrderCommand, CreateOrderResult>
 {
-    public async Task<CreateOrderResult> Handle(CreateOrderCommand command, 
+    public async Task<CreateOrderResult> Handle(CreateOrderCommand command,
                                           CancellationToken cancellationToken)
-    {
-        // create order entity from command object
-        // save to databes
-        // return rslt
-
-
+    { 
         var ordr = CreateNewOrder(command.Order);
         dbContext.Orders.Add(ordr);
-        await dbContext.SaveChangesAsync(cancellationToken);
-
-        throw new NotImplementedException();
+        if(await dbContext.SaveChangesAsync(cancellationToken) > 0) {
+         return new CreateOrderResult(ordr.Id.Value);
+        }
+        throw new InvalidOperationException("Order could not be created.");
     }
 
     private Order CreateNewOrder(OrderDto order)
     {
         var shippingAddress = Address.Of(
-                             frstName:    order.ShippingAddress.FirestName,
-                             lstName :   order.ShippingAddress.LastName,
-                             email  : order.ShippingAddress.EmailAddress,
-                             line    :order.ShippingAddress.AddressLine,
-                             state :   order.ShippingAddress.State,
-                             country  : order.ShippingAddress.Country,
-                             zipCode:  order.ShippingAddress.ZipCode);
+                             frstName: order.ShippingAddress.FirestName,
+                             lstName: order.ShippingAddress.LastName,
+                             email: order.ShippingAddress.EmailAddress,
+                             line: order.ShippingAddress.AddressLine,
+                             state: order.ShippingAddress.State,
+                             country: order.ShippingAddress.Country,
+                             zipCode: order.ShippingAddress.ZipCode);
         var billingAddress = Address.Of(
                              frstName: order.BillingAddress.FirestName,
                              lstName: order.BillingAddress.LastName,
@@ -48,7 +36,7 @@ internal class CreateOrderCommandHandler(IApplicationDbContext dbContext) : ICom
                              cardName: order.Payment.CardName,
                              expiration: order.Payment.ExpiresIn,
                              cvv: order.Payment.Cvv,
-                             method:1);
+                             method: 1);
 
         var new_order = Order.Create(
             id: OrderId.Of(Guid.NewGuid()),
