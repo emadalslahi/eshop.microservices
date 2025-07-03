@@ -8,17 +8,16 @@ using MediatR;
 namespace Eshop.Ordering.Api.EndPoints;
 
 
-public record GetOrdersRequest(PaginationRequest PaginationRequest);
+//public record GetOrdersRequest(PaginationRequest PaginationRequest);
 public record GetOrdersResponse(PaginationResult<OrderDto> Orders);
 public class GetOrders : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapGet("/orders",
-            async (GetOrdersRequest request, ISender sender) =>
+            async ([AsParameters] PaginationRequest request, ISender sender) =>
             {
-                var query = request.Adapt<GetOrdersQuery>();
-                var result = await sender.Send(query);
+                var result = await sender.Send(new GetOrdersQuery(request));
                 var response = result.Adapt< GetOrdersResponse>();
                 return Results.Ok(response);
             })

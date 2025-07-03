@@ -16,7 +16,7 @@ internal class CreateOrderCommandHandler(IApplicationDbContext dbContext) : ICom
     private Order CreateNewOrder(OrderDto order)
     {
         var shippingAddress = Address.Of(
-                             frstName: order.ShippingAddress.FirestName,
+                             frstName: order.ShippingAddress.FirstName,
                              lstName: order.ShippingAddress.LastName,
                              email: order.ShippingAddress.EmailAddress,
                              line: order.ShippingAddress.AddressLine,
@@ -24,7 +24,7 @@ internal class CreateOrderCommandHandler(IApplicationDbContext dbContext) : ICom
                              country: order.ShippingAddress.Country,
                              zipCode: order.ShippingAddress.ZipCode);
         var billingAddress = Address.Of(
-                             frstName: order.BillingAddress.FirestName,
+                             frstName: order.BillingAddress.FirstName,
                              lstName: order.BillingAddress.LastName,
                              email: order.BillingAddress.EmailAddress,
                              line: order.BillingAddress.AddressLine,
@@ -47,11 +47,14 @@ internal class CreateOrderCommandHandler(IApplicationDbContext dbContext) : ICom
             status: OrderStatus.Pending,
             payment: payment);
 
-        foreach (var item in order.OrderItems)
-            new_order.Add(ProductId.Of(item.ProductId),
-                       item.Quantity,
-                       item.Price
-                          );
+        if (order.OrderItems != null)
+        {
+            foreach (var item in order.OrderItems)
+                new_order.Add(ProductId.Of(item.ProductId),
+                           item.Quantity,
+                           item.Price
+                              );
+        }
         return new_order;
     }
 }

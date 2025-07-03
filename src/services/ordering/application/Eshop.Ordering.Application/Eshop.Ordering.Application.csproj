@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\buildingblocks\buildingblocks.messaging\eshop.buildingblocks.messaging\eshop.buildingblocks.messaging.csproj" />
     <ProjectReference Include="..\..\..\..\buildingblocks\eshop.buildingblocks\eshop.buildingblocks.csproj" />
     <ProjectReference Include="..\..\Domain\Eshop.Ordering.Domain\Eshop.Ordering.Domain.csproj" />
   </ItemGroup>

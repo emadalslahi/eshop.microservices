@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eshop.Ordering.Application"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eshop.Ordering.Infrastructuer", "services\ordering\infrastructuer\Eshop.Ordering.Infrastructuer\Eshop.Ordering.Infrastructuer.csproj", "{A47FED01-3221-4601-AD8D-F06AD04DB93A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eshop.buildingblocks.messaging", "buildingblocks\buildingblocks.messaging\eshop.buildingblocks.messaging\eshop.buildingblocks.messaging.csproj", "{D38784AD-27B6-443F-86C2-3227622A71B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{A47FED01-3221-4601-AD8D-F06AD04DB93A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A47FED01-3221-4601-AD8D-F06AD04DB93A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A47FED01-3221-4601-AD8D-F06AD04DB93A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D38784AD-27B6-443F-86C2-3227622A71B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D38784AD-27B6-443F-86C2-3227622A71B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D38784AD-27B6-443F-86C2-3227622A71B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D38784AD-27B6-443F-86C2-3227622A71B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,5 +98,6 @@ Global
 		{2D6A4D58-B1C3-4EAA-952D-E50D491D6612} = {111EBEEC-266E-4FA6-B01C-C482448D9090}
 		{C61EADAA-476E-4B10-9401-FD356B953EE6} = {111EBEEC-266E-4FA6-B01C-C482448D9090}
 		{A47FED01-3221-4601-AD8D-F06AD04DB93A} = {111EBEEC-266E-4FA6-B01C-C482448D9090}
+		{D38784AD-27B6-443F-86C2-3227622A71B4} = {46ABA3D2-DF17-4798-9B57-0A3AA04E9108}
 	EndGlobalSection
 EndGlobal

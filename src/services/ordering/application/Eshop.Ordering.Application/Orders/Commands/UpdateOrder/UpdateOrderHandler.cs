@@ -27,7 +27,7 @@ internal class UpateOrderCommandHandler(IApplicationDbContext dbContext) :
     private void UpdateOrder(Order ordr, OrderDto orderDto)
     {
         var shippingAddress = Address.Of(
-                             frstName: orderDto.ShippingAddress.FirestName,
+                             frstName: orderDto.ShippingAddress.FirstName,
                              lstName: orderDto.ShippingAddress.LastName,
                              email: orderDto.ShippingAddress.EmailAddress,
                              line: orderDto.ShippingAddress.AddressLine,
@@ -35,7 +35,7 @@ internal class UpateOrderCommandHandler(IApplicationDbContext dbContext) :
                              country: orderDto.ShippingAddress.Country,
                              zipCode: orderDto.ShippingAddress.ZipCode);
         var billingAddress = Address.Of(
-                             frstName: orderDto.BillingAddress.FirestName,
+                             frstName: orderDto.BillingAddress.FirstName,
                              lstName: orderDto.BillingAddress.LastName,
                              email: orderDto.BillingAddress.EmailAddress,
                              line: orderDto.BillingAddress.AddressLine,

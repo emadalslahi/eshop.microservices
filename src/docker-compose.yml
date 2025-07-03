@@ -13,6 +13,9 @@ services:
 
   orderDb:
     image: mcr.microsoft.com/mssql/server
+
+  messageBrocker:
+    image: rabbitmq:management
     
   eshop.catalog.api:
     image: ${DOCKER_REGISTRY-}eshopcatalogapi

@@ -1,6 +1,7 @@
 using Carter;
 using eshop.buildingblocks.Behaviours;
 using eshop.buildingblocks.Exceptions.Handler;
+using eshop.buildingblocks.messaging.MassTransit;
 using Eshop.Basket.Api.Data;
 using Eshop.Basket.Api.models;
 using Eshop.Discount.Grpc.Protos;
@@ -49,6 +50,12 @@ builder.Services.AddGrpcClient<DiscountService.DiscountServiceClient>(options =>
     options.Address = new Uri(builder.Configuration.GetConnectionString("DiscountGrpc")!);
 });
 
+
+// Async Communication Services
+builder.Services.AddMessageBrocker(builder.Configuration);
+
+
+//------------| Cross Cutting Concern Services
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 builder.Services.AddHealthChecks()
     .AddNpgSql(builder.Configuration.GetConnectionString("Database")!)
